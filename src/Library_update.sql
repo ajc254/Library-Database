@@ -8,17 +8,17 @@ USE Libraries;
 UPDATE Loan SET Loan.dateIn = CURRENT_DATE
 	WHERE 
 		Loan.borrowerID = (SELECT ID 
-								FROM
-									borrower as BRW
-								WHERE 
-									BRW.fName = 'Ian' AND
-									BRW.lName = 'Cooper')
+					FROM
+						borrower as BRW
+					WHERE 
+						BRW.fName = 'Ian' AND
+						BRW.lName = 'Cooper')
 		AND
 		loan.ISBN = (SELECT ISBN 
-						FROM 
-							book as BK
-						WHERE
-							BK.title = 'Pride and Prejudice') 
+					FROM 
+						book as BK
+					WHERE
+						BK.title = 'Pride and Prejudice') 
 		AND
 		loan.dateIn IS NULL
 				 
@@ -63,13 +63,13 @@ SET BI.noOfCopies = BI.noOfCopies - 1
 
 	WHERE 
 		BI.ISBN = (SELECT book.ISBN from book 
-						WHERE
-							book.title = 'The Lost Tribe')
+					WHERE
+						book.title = 'The Lost Tribe')
 		AND
 		BI.branchID = (SELECT LB.ID from librarybranch AS LB 
-							WHERE
-								LB.name = 'St Thomas');
- 
+					WHERE
+						LB.name = 'St Thomas');
+
 
 -- Update E
 UPDATE loan AS LN 
